@@ -8,6 +8,7 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/src/setup-jest.ts"],
   verbose: true,
   testURL: "http://localhost",
+  testEnvironment: "jsdom",
   globals: {
     'ts-jest': {
       ...tsJestPreset,
