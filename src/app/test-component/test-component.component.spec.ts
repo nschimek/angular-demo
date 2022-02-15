@@ -1,4 +1,4 @@
-import { Spectator, createComponentFactory } from '@ngneat/spectator';
+import { Spectator, createComponentFactory, byTestId } from '@ngneat/spectator/jest';
 
 import { TestComponentComponent } from './test-component.component';
 
@@ -12,5 +12,20 @@ describe('TestComponentComponent', () => {
 
   it('should create', () => {
     expect(spectator.component).toBeTruthy();
+  });
+
+  it('should display the true element when flag is true', () => {
+    spectator.component.flag = true;
+    
+    expect(spectator.query(byTestId('true'))).toExist();
+    expect(spectator.query(byTestId('false'))).not.toExist();
+  });
+
+  it('should display the true element when flag is false', () => {
+    spectator.component.flag = false;
+    spectator.detectChanges();
+
+    expect(spectator.query(byTestId('true'))).not.toExist();
+    expect(spectator.query(byTestId('false'))).toExist();
   });
 });
