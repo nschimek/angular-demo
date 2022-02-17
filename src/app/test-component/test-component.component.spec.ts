@@ -28,4 +28,8 @@ describe('TestComponentComponent', () => {
     expect(spectator.query(byTestId('true'))).not.toExist();
     expect(spectator.query(byTestId('false'))).toExist();
   });
+
+  it('should do some more testing', () => {
+    expect(spectator.query('h1')).toExist();
+  })
 });
